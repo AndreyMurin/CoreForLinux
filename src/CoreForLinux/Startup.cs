@@ -7,6 +7,8 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.PlatformAbstractions;
+using System.IO;
 
 namespace CoreForLinux
 {
@@ -29,6 +31,12 @@ namespace CoreForLinux
         {
             // Add framework services.
             services.AddMvc();
+            /*
+            var path = PlatformServices.Default.Application.ApplicationBasePath;
+            services.AddEntityFramework()
+                .AddSqlite()
+                .AddDbContext<ApplicationDbContext>(options => options.UseSqlite("Filename=" + Path.Combine(path, "site.db")));
+            */
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
